@@ -3,154 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Naruto Impact HD - Ultimate Comparison Tool</title>
+    <title>GOW: Chains of Olympus HD - Comparison Hub</title>
     
     <script defer src="https://unpkg.com/img-comparison-slider@7/dist/index.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/img-comparison-slider@7/dist/styles.css" />
 
     <style>
         :root {
-            --naruto-orange: #ff9000;
-            --dark-bg: #0b0b0b;
-            --card-bg: #161616;
-            --text-gray: #aaa;
+            --gow-red: #8b0000; /* Vermelho Sangue */
+            --gow-gold: #c5a059; /* Dourado Espartano */
+            --dark-bg: #050505;
+            --card-bg: #121212;
+            --text-gray: #888;
         }
 
         body { 
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            font-family: 'Times New Roman', serif; 
             background-color: var(--dark-bg); 
-            color: white; 
+            color: #e0e0e0; 
             margin: 0;
             padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            background-image: radial-gradient(circle at center, #1a0000 0%, #050505 100%);
         }
 
         .container { max-width: 1100px; width: 100%; text-align: center; }
 
-        header { padding: 20px 0; margin-bottom: 20px; border-bottom: 1px solid #333; }
-        h1 { color: var(--naruto-orange); margin: 0; font-size: 1.8rem; text-transform: uppercase; }
+        header { 
+            padding: 30px 0; 
+            margin-bottom: 20px; 
+            border-bottom: 2px solid var(--gow-red);
+            box-shadow: 0 10px 20px rgba(139, 0, 0, 0.2);
+        }
+        
+        h1 { 
+            color: var(--gow-gold); 
+            margin: 0; 
+            font-size: 2.5rem; 
+            text-transform: uppercase; 
+            letter-spacing: 4px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
         
         /* Menu de Categorias */
         .category-menu {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px;
+            gap: 15px;
             margin-bottom: 30px;
         }
 
         .btn-cat {
-            background: #222;
-            border: 2px solid #444;
-            color: white;
-            padding: 12px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: var(--gow-gold);
+            padding: 15px;
             cursor: pointer;
-            border-radius: 8px;
-            transition: 0.3s;
+            border-radius: 4px;
+            transition: all 0.4s;
             font-weight: bold;
-            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .btn-cat:hover {
+            border-color: var(--gow-red);
+            box-shadow: inset 0 0 10px var(--gow-red);
         }
 
         .btn-cat.active {
-            border-color: var(--naruto-orange);
-            background: var(--naruto-orange);
-            color: black;
+            border-color: var(--gow-red);
+            background: var(--gow-red);
+            color: white;
         }
 
-        /* Seletor de Imagens (0-11) */
+        /* Seletor de Imagens */
         .image-selector {
             margin: 20px 0;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .btn-img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 1px solid #555;
-            background: #333;
-            color: white;
+            width: 45px;
+            height: 45px;
+            border: 1px solid var(--gow-gold);
+            background: transparent;
+            color: var(--gow-gold);
             cursor: pointer;
-            transition: 0.2s;
+            transition: 0.3s;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); /* Formato hexagonal */
         }
 
         .btn-img.active {
-            background: white;
+            background: var(--gow-gold);
             color: black;
-            border-color: white;
+            transform: scale(1.1);
         }
 
         /* Área do Slider */
         .comparison-area {
             background: var(--card-bg);
-            padding: 15px;
-            border-radius: 15px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            padding: 5px;
+            border: 1px solid #222;
+            box-shadow: 0 0 40px rgba(0,0,0,1);
             position: relative;
         }
 
         img-comparison-slider {
             width: 100%;
-            --divider-color: var(--naruto-orange);
-            --default-handle-color: var(--naruto-orange);
-            border-radius: 10px;
+            --divider-color: var(--gow-red);
+            --default-handle-color: var(--gow-red);
             outline: none;
         }
 
         img-comparison-slider img {
             width: 100%;
-            max-height: 70vh;
+            max-height: 75vh;
             object-fit: contain;
             display: block;
         }
 
         .info-panel {
-            margin-top: 20px;
-            background: rgba(255,144,0,0.1);
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px dashed var(--naruto-orange);
+            margin-top: 30px;
+            background: rgba(139, 0, 0, 0.05);
+            padding: 20px;
+            border-left: 4px solid var(--gow-red);
+            font-style: italic;
         }
 
         .label-box {
             display: flex;
             justify-content: space-between;
-            padding: 10px;
+            padding: 15px;
             font-weight: bold;
-            color: var(--naruto-orange);
+            color: var(--gow-gold);
             text-transform: uppercase;
-            font-size: 0.8rem;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
         }
 
-        footer { margin-top: 50px; color: #555; font-size: 0.8rem; }
+        footer { 
+            margin-top: 60px; 
+            padding: 20px;
+            color: #444; 
+            font-size: 0.75rem; 
+            border-top: 1px solid #1a1a1a;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
         <header>
-            <h1>Naruto Impact HD - Comparison Hub</h1>
-            <p style="color: var(--text-gray)">Selecione uma categoria e navegue pelos frames para comparar as texturas.</p>
+            <h1>GOW: Chains of Olympus HD</h1>
+            <p style="color: var(--text-gray); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">
+                Interface de Comparação de Ativos Remasterizados
+            </p>
         </header>
 
         <div class="category-menu">
-            <button class="btn-cat active" onclick="setCategory('psp_vs_png', this)">PSP vs PNG Normal</button>
-            <button class="btn-cat" onclick="setCategory('png_vs_color', this)">PNG Normal vs Vibrant</button>
-            <button class="btn-cat" onclick="setCategory('png_vs_ktx2', this)">PNG vs KTX2 Normal</button>
-            <button class="btn-cat" onclick="setCategory('color_vs_ktx2color', this)">Vibrant vs KTX2 Vibrant</button>
+            <button class="btn-cat active" onclick="setCategory('psp_vs_png', this)">PSP vs PS3 AI Upscale</button>
+            <button class="btn-cat" onclick="setCategory('png_vs_color', this)">Normal vs Vivid Colors</button>
+            <button class="btn-cat" onclick="setCategory('png_vs_ktx2', this)">PNG vs KTX2 Performance</button>
         </div>
 
-        <div class="image-selector" id="imgSelector">
-            </div>
+        <div class="image-selector" id="imgSelector"></div>
 
         <div class="comparison-area">
             <div class="label-box">
-                <span id="label-left">Original / Base</span>
-                <span id="label-right">HD / Processed</span>
+                <span id="label-left">PSP Original</span>
+                <span id="label-right">HD Remastered</span>
             </div>
             
             <img-comparison-slider id="slider">
@@ -160,49 +188,42 @@
         </div>
 
         <div class="info-panel">
-            <p id="comp-description">Mostrando comparação entre as texturas originais do PSP e o upscale PNG 4x.</p>
+            <p id="comp-description">Aguardando seleção...</p>
         </div>
 
         <footer>
-            Desenvolvido por MESKH4H4 | Naruto Shippuden Ultimate Ninja Impact HD Project
+            PROJETO DESENVOLVIDO POR MESKH4H4 | GOD OF WAR HD TEXTURE PACK 2026
         </footer>
     </div>
 
     <script>
-        const baseUrl = "https://meskh4h4.github.io/naruto-shippuden-ultimate-ninja-impact/comparacoes";
+        // Mantenha o seu baseUrl e a lógica do script anterior aqui
+        const baseUrl = "https://meskh4h4.github.io/seu-repositorio/comparacoes";
         
         let currentCategory = 'psp_vs_png';
         let currentIndex = 0;
 
-        // Configuração das pastas e prefixos baseada no seu sistema
         const configs = {
             'psp_vs_png': {
                 leftDir: 'PSP/psp-4x',
-                rightDir: 'PNG-NORMAL/png-normal',
-                desc: 'Comparação: Textura Original PSP (Upscaled) vs Reconstrução PNG Normal.',
+                rightDir: 'PS3-AI/png-hd',
+                desc: 'Análise: Textura extraída do PSP vs Textura do PS3 com Upscale HDCube4Plus.',
                 labelL: 'PSP Original',
-                labelR: 'PNG HD Normal'
+                labelR: 'PS3 HD AI'
             },
             'png_vs_color': {
-                leftDir: 'PNG-NORMAL/png-normal',
-                rightDir: 'PNG-VIBRANTCOLOR/png-color',
-                desc: 'Comparação: PNG Normal vs Versão Vibrant Colors (AdobeRGB -> sRGB).',
-                labelL: 'PNG Normal',
-                labelR: 'Vibrant Colors'
+                leftDir: 'PS3-AI/png-hd',
+                rightDir: 'VIVID/vivid-hd',
+                desc: 'Análise: Perfil de cor padrão vs Correção de Gama e Vibrância.',
+                labelL: 'HD Padrão',
+                labelR: 'HD Vivid'
             },
             'png_vs_ktx2': {
-                leftDir: 'PNG-NORMAL/png-normal',
-                rightDir: 'KTX2/ktx2-normal',
-                desc: 'Comparação: Fidelidade PNG vs Performance KTX2 (Normal).',
-                labelL: 'PNG (Lossless)',
-                labelR: 'KTX2 (Optimized)'
-            },
-            'color_vs_ktx2color': {
-                leftDir: 'PNG-VIBRANTCOLOR/png-color',
-                rightDir: 'KTX2-VIBRANTCOLOR/ktx2-color',
-                desc: 'Comparação: Fidelidade PNG vs Performance KTX2 (Vibrant Colors).',
-                labelL: 'PNG Vibrant',
-                labelR: 'KTX2 Vibrant'
+                leftDir: 'PS3-AI/png-hd',
+                rightDir: 'KTX2/ktx2-opt',
+                desc: 'Análise: Comparação de perda visual no formato comprimido KTX2.',
+                labelL: 'PNG (Original)',
+                labelR: 'KTX2 (Otimizado)'
             }
         };
 
@@ -219,21 +240,15 @@
 
         function setCategory(cat, btn) {
             currentCategory = cat;
-            
-            // Atualizar botões
             document.querySelectorAll('.btn-cat').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            
             updateImages();
         }
 
         function setIndex(idx, btn) {
             currentIndex = idx;
-            
-            // Atualizar botões
             document.querySelectorAll('.btn-img').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            
             updateImages();
         }
 
@@ -242,21 +257,14 @@
             const imgBefore = document.getElementById('img-before');
             const imgAfter = document.getElementById('img-after');
             
-            // Gerar caminhos completos
-            const pathBefore = `${baseUrl}/${config.leftDir}-${currentIndex}.png`;
-            const pathAfter = `${baseUrl}/${config.rightDir}-${currentIndex}.png`;
+            imgBefore.src = `${baseUrl}/${config.leftDir}-${currentIndex}.png`;
+            imgAfter.src = `${baseUrl}/${config.rightDir}-${currentIndex}.png`;
 
-            // Aplicar no HTML
-            imgBefore.src = pathBefore;
-            imgAfter.src = pathAfter;
-
-            // Atualizar Textos
             document.getElementById('comp-description').innerText = config.desc;
             document.getElementById('label-left').innerText = config.labelL;
             document.getElementById('label-right').innerText = config.labelR;
         }
 
-        // Iniciar site
         initSelector();
         updateImages();
     </script>
