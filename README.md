@@ -65,4 +65,4 @@ The goal is to produce slightly more vibrant colors without distorting the origi
 
 To see the real difference in quality between the original textures and the AI upscale, access the interactive comparator:
 
-👉 **Screenshots:** https://meskh4h4.github.io/naruto-shippuden-ultimate-ninja-impact/
+👉 **Screenshots:** https://meskh4h4.github.io/God-of-War-Chains-of-Olympus/
