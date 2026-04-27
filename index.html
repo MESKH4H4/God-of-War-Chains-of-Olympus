@@ -10,8 +10,8 @@
 
     <style>
         :root {
-            --gow-red: #8b0000; /* Vermelho Sangue */
-            --gow-gold: #c5a059; /* Dourado Espartano */
+            --gow-red: #8b0000;
+            --gow-gold: #c5a059;
             --dark-bg: #050505;
             --card-bg: #121212;
             --text-gray: #888;
@@ -47,7 +47,6 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
         
-        /* Menu de Categorias */
         .category-menu {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -68,18 +67,12 @@
             font-size: 0.8rem;
         }
 
-        .btn-cat:hover {
-            border-color: var(--gow-red);
-            box-shadow: inset 0 0 10px var(--gow-red);
-        }
-
         .btn-cat.active {
             border-color: var(--gow-red);
             background: var(--gow-red);
             color: white;
         }
 
-        /* Seletor de Imagens */
         .image-selector {
             margin: 20px 0;
             display: flex;
@@ -96,7 +89,7 @@
             color: var(--gow-gold);
             cursor: pointer;
             transition: 0.3s;
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); /* Formato hexagonal */
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
         }
 
         .btn-img.active {
@@ -105,20 +98,17 @@
             transform: scale(1.1);
         }
 
-        /* Área do Slider */
         .comparison-area {
             background: var(--card-bg);
             padding: 5px;
             border: 1px solid #222;
             box-shadow: 0 0 40px rgba(0,0,0,1);
-            position: relative;
         }
 
         img-comparison-slider {
             width: 100%;
             --divider-color: var(--gow-red);
             --default-handle-color: var(--gow-red);
-            outline: none;
         }
 
         img-comparison-slider img {
@@ -128,14 +118,6 @@
             display: block;
         }
 
-        .info-panel {
-            margin-top: 30px;
-            background: rgba(139, 0, 0, 0.05);
-            padding: 20px;
-            border-left: 4px solid var(--gow-red);
-            font-style: italic;
-        }
-
         .label-box {
             display: flex;
             justify-content: space-between;
@@ -143,18 +125,10 @@
             font-weight: bold;
             color: var(--gow-gold);
             text-transform: uppercase;
-            letter-spacing: 2px;
             font-size: 0.9rem;
         }
 
-        footer { 
-            margin-top: 60px; 
-            padding: 20px;
-            color: #444; 
-            font-size: 0.75rem; 
-            border-top: 1px solid #1a1a1a;
-            width: 100%;
-        }
+        footer { margin-top: 60px; color: #444; font-size: 0.75rem; }
     </style>
 </head>
 <body>
@@ -162,14 +136,12 @@
     <div class="container">
         <header>
             <h1>GOW: Chains of Olympus HD</h1>
-            <p style="color: var(--text-gray); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">
-                Interface de Comparação de Ativos Remasterizados
-            </p>
+            <p style="color: var(--text-gray); text-transform: uppercase; font-size: 0.8rem;">Interface de Comparação</p>
         </header>
 
         <div class="category-menu">
-            <button class="btn-cat active" onclick="setCategory('psp_vs_png', this)">PSP vs PS3 AI Upscale</button>
-            <button class="btn-cat" onclick="setCategory('png_vs_color', this)">Normal vs Vivid Colors</button>
+            <button class="btn-cat active" onclick="setCategory('psp_vs_ktx2', this)">PSP vs PS3 AI Upscale</button>
+            <button class="btn-cat" onclick="setCategory('ktx2_vs_color', this)">Normal vs Vivid Colors</button>
             <button class="btn-cat" onclick="setCategory('png_vs_ktx2', this)">PNG vs KTX2 Performance</button>
         </div>
 
@@ -177,8 +149,8 @@
 
         <div class="comparison-area">
             <div class="label-box">
-                <span id="label-left">PSP Original</span>
-                <span id="label-right">HD Remastered</span>
+                <span id="label-left">Original</span>
+                <span id="label-right">HD</span>
             </div>
             
             <img-comparison-slider id="slider">
@@ -187,17 +159,12 @@
             </img-comparison-slider>
         </div>
 
-        <div class="info-panel">
-            <p id="comp-description">Aguardando seleção...</p>
-        </div>
-
         <footer>
-            PROJETO DESENVOLVIDO POR MESKH4H4 | GOD OF WAR HD TEXTURE PACK 2026
+            PROJETO DESENVOLVIDO POR MESKH4H4 | GOD OF WAR HD 2026
         </footer>
     </div>
 
     <script>
-        // Mantenha o seu baseUrl e a lógica do script anterior aqui
         const baseUrl = "https://meskh4h4.github.io/God-of-War-Chains-of-Olympus/comparacoes";
         
         let currentCategory = 'psp_vs_ktx2';
@@ -207,21 +174,18 @@
             'psp_vs_ktx2': {
                 leftDir: 'PSP/psp-4x',
                 rightDir: 'KTX2/ktx2-opt',
-                desc: 'Análise: Textura extraída do PSP vs Textura do PS3 com Upscale HDCube4Plus.',
                 labelL: 'PSP Original',
                 labelR: 'PS3 HD AI'
             },
             'ktx2_vs_color': {
                 leftDir: 'KTX2/ktx2-opt',
                 rightDir: 'VIVID/vivid-hd',
-                desc: 'Análise: Perfil de cor padrão vs Correção de Gama e Vibrância.',
                 labelL: 'HD Padrão',
                 labelR: 'HD Vivid'
             },
             'png_vs_ktx2': {
                 leftDir: 'PS3-AI/png-hd',
                 rightDir: 'KTX2/ktx2-opt',
-                desc: 'Análise: Comparação de perda visual no formato comprimido KTX2.',
                 labelL: 'PNG (Original)',
                 labelR: 'KTX2 (Otimizado)'
             }
@@ -229,10 +193,12 @@
 
         function initSelector() {
             const selector = document.getElementById('imgSelector');
-            for (let i = 0; i <= 11; i++) {
+            selector.innerHTML = ''; // Limpa antes de criar
+            // Alterado para 7 (total 8 imagens: 0 a 7)
+            for (let i = 0; i <= 7; i++) {
                 const btn = document.createElement('button');
                 btn.innerText = i;
-                btn.className = 'btn-img' + (i === 0 ? ' active' : '');
+                btn.className = 'btn-img' + (i === currentIndex ? ' active' : '');
                 btn.onclick = () => setIndex(i, btn);
                 selector.appendChild(btn);
             }
@@ -257,10 +223,15 @@
             const imgBefore = document.getElementById('img-before');
             const imgAfter = document.getElementById('img-after');
             
-            imgBefore.src = `${baseUrl}/${config.leftDir}-${currentIndex}.png`;
-            imgAfter.src = `${baseUrl}/${config.rightDir}-${currentIndex}.png`;
+            // Adicionado t=${new Date().getTime()} para evitar bugs de cache
+            const cacheBuster = `?t=${new Date().getTime()}`;
+            
+            const newSrcBefore = `${baseUrl}/${config.leftDir}-${currentIndex}.png${cacheBuster}`;
+            const newSrcAfter = `${baseUrl}/${config.rightDir}-${currentIndex}.png${cacheBuster}`;
 
-            document.getElementById('comp-description').innerText = config.desc;
+            imgBefore.src = newSrcBefore;
+            imgAfter.src = newSrcAfter;
+
             document.getElementById('label-left').innerText = config.labelL;
             document.getElementById('label-right').innerText = config.labelR;
         }
